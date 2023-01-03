@@ -1,0 +1,272 @@
+.toast--container {
+    position: fixed;
+    margin: 16px 16px 0 16px;
+    padding: 0;
+    z-index: var(--snackbar-zindex);
+    pointer-events: none;
+
+    &.is-top {
+        top: 0;
+    }
+
+    &.is-bottom {
+        bottom: 0;
+    }
+
+    &.is-left {
+        left: 0;
+    }
+
+    &.is-right {
+        right: 0;
+    }
+
+    &.is-middle {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &.is-centre {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &.has-shadow .toast-snackbar-message {
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+            0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+}
+
+.toast-message {
+    display: flex;
+    color: #fff;
+    margin-bottom: 16px;
+    position: relative;
+    border-radius: 4px;
+    pointer-events: all;
+
+    &.has-border {
+        position: relative;
+        background-color: #fff;
+        border-style: solid;
+        border-color: currentColor;
+        border-width: 0;
+        &::before {
+            border-radius: inherit;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            content: '';
+            background-color: currentColor;
+            opacity: 0.12;
+        }
+        &.success {
+            color: var(--success-colour);
+        }
+        &.error {
+            color: var(--error-colour);
+        }
+        &.info {
+            color: var(--info-colour);
+        }
+        &.warning {
+            color: var(--warning-colour);
+        }
+        &.has-background {
+            color: var(--message-background);
+        }
+    }
+
+    &.border-left {
+        border-left-width: 8px;
+    }
+    &.border-right {
+        border-right-width: 8px;
+    }
+    &.border-top {
+        border-top-width: 8px;
+    }
+    &.border-bottom {
+        border-bottom-width: 8px;
+    }
+
+    &.success:not(.has-background):not(.has-border) {
+        background-color: var(--success-colour);
+        border-color: var(--success-colour);
+    }
+    &.error:not(.has-background):not(.has-border) {
+        background-color: var(--error-colour);
+        border-color: var(--error-colour);
+    }
+    &.warning:not(.has-background):not(.has-border) {
+        background-color: var(--warning-colour);
+        border-color: var(--warning-colour);
+    }
+    &.info:not(.has-background):not(.has-border) {
+        background-color: var(--info-colour);
+        border-color: var(--info-colour);
+    }
+    &.has-background:not(.has-border) {
+        background-color: var(--message-background);
+        border-color: var(--message-background);
+    }
+
+    &-wrapper {
+        align-items: center;
+        border-radius: inherit;
+        display: flex;
+        padding: 16px;
+    }
+
+    &.is-dense .toast-snackbar-message-wrapper {
+        padding: 8px 16px;
+    }
+
+    &-title {
+        font-weight: bold;
+    }
+
+    &-icon {
+        margin-right: 16px;
+        display: flex;
+    }
+
+    &-close {
+        margin-left: 16px;
+        min-width: 30px;
+
+        button {
+            -webkit-appearance: none;
+            &:focus:not(:focus-visible) {
+                outline: none;
+            }
+            &:focus:not(:-moz-focusring) {
+                outline: none;
+            }
+            border: none;
+            margin: 0;
+            padding: 0;
+            overflow: visible;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            line-height: normal;
+            -webkit-font-smoothing: inherit;
+            -moz-osx-font-smoothing: inherit;
+            text-align: inherit;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            &::before {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: currentColor;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 300ms ease-in-out;
+                border-radius: 50%;
+            }
+
+            &:hover::before {
+                opacity: 0.22;
+            }
+        }
+    }
+
+    &-content {
+        display: flex;
+        flex-flow: column;
+        width: min(50vw, 350px);
+    }
+
+    &-badge {
+        font-size: 0.9em;
+        font-weight: bold;
+        padding: 0.125em 0.5em;
+        border-radius: 8px;
+        position: absolute;
+        background: #c10015;
+        border: 1px solid crimson;
+        box-shadow: 0 1px 3px #0003, 0 1px 1px #00000024,
+            0 2px 1px -1px #0000001f;
+        color: white;
+        top: 0;
+        left: 0;
+        transform: translate(-25%, -25%);
+    }
+
+    &.border-left .toast-snackbar-message-badge {
+        left: 16px;
+        top: -5px;
+    }
+}
+
+.toast-snackbar-message-enter-from {
+    opacity: 0;
+    -webkit-transform: translateY(50%);
+    -ms-transform: translateY(50%);
+    transform: translateY(50%);
+}
+.toast-snackbar-message-leave-from {
+    max-height: 1000px;
+}
+.toast-snackbar .toast-snackbar-message.toast-snackbar-message-leave-to {
+    max-height: 0;
+    opacity: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+
+    .toast-snackbar-message-badge {
+        opacity: 0;
+    }
+}
+.toast-snackbar-message-enter-active {
+    transition: transform 0.3s, opacity 0.3s;
+}
+.toast-snackbar-message-leave-active {
+    transition: max-height 0.45s cubic-bezier(0, 1, 0, 1), opacity 0.3s,
+        margin-bottom 0.3s;
+}
+
+@keyframes headShake {
+    0% {
+        transform: translate(-25%, -25%);
+    }
+
+    6.5% {
+        transform: translate(calc(-25% - 6px), -25%) rotateY(-9deg);
+    }
+
+    18.5% {
+        transform: translate(calc(-25% + 5px), -25%) rotateY(7deg);
+    }
+
+    31.5% {
+        transform: translate(calc(-25% - 3px), -25%) rotateY(-5deg);
+    }
+
+    43.5% {
+        transform: translate(calc(-25% + 2px), -25%) rotateY(3deg);
+    }
+
+    50% {
+        transform: translate(-25%, -25%);
+    }
+}
+.shake-baby-shake .toast-snackbar-message-badge {
+    animation-timing-function: ease-in-out;
+    animation-name: headShake;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}

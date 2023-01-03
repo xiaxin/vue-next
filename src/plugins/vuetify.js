@@ -6,10 +6,14 @@ import * as directives from 'vuetify/directives'
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 
+// toast
+import ToastContainer from './toast/Container.vue'
+import useToastStore from './toast/store'
+import './toast/style.scss'
+
 export default defineNuxtPlugin((nuxtApp) => {
     console.log('[plugins] [vuetify] [components]', components)
     console.log('[plugins] [vuetify] [directives]', directives)
-
 
     const vuetify = createVuetify({
         components,
@@ -22,4 +26,16 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
 
     nuxtApp.vueApp.use(vuetify)
+
+    // vuetify toast
+    nuxtApp.vueApp.use({
+        install: (app) => {
+            if (typeof window !== 'undefined') {
+                window.$toast = useToastStore()
+            }
+        },
+    })
+    nuxtApp.vueApp.component('toast-container', ToastContainer)
+
+    // vuetify request
 })

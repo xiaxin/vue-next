@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    ssr: true,
+    ssr: false,
     // 自动加载
     imports: {
         dirs: [
@@ -8,6 +8,10 @@ export default defineNuxtConfig({
             // 'composables/**',
             'stores/**',
         ],
+    },
+
+    build: {
+        transpile: ['vuetify'],
     },
 
 
