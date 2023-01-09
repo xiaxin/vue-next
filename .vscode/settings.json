@@ -1,0 +1,21 @@
+{
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    // pretter
+    "prettier.tabWidth": 4,
+
+    // eslint
+    "eslint.format.enable": true,
+
+    // files
+    "files.autoSave": "onFocusChange",
+
+    // editor
+    "editor.tabCompletion": "on",
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+}

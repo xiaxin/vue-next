@@ -1,4 +1,4 @@
-export const useSystemStore = definePiniaStore('system', {
+export const useSystemStore = defineStore('system', {
     // state
     state: () => ({
         // 访问TOKEN

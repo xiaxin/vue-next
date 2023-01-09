@@ -14,6 +14,8 @@ export default defineNuxtConfig({
         transpile: ['vuetify'],
     },
 
+    // css
+    css: ['/assets/main.scss'],
 
     srcDir: 'src/',
 
@@ -31,5 +33,4 @@ export default defineNuxtConfig({
             },
         ],
     ],
-
 })

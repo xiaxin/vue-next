@@ -5,7 +5,7 @@
     </template>
 
     <template v-if="filterColumns">
-        <common-row flex>
+        <common-row flex style="background-color: #ffffff">
             <template v-for="(header, index) in tableHeaders" :key="index">
                 <div v-if="header.hide != null" class="d-flex mr-2">
                     <v-checkbox

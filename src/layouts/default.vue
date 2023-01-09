@@ -1,11 +1,11 @@
 <template>
     <v-app>
-        <!-- header -->
-        <layout-header />
+        <!-- aside -->
+        <layout-aside />
         <!-- main -->
         <v-main>
-            <!-- aside -->
-            <layout-aside />
+        <!-- header -->
+        <layout-header />
             <!-- slot -->
             <slot />
         </v-main>

@@ -1,54 +1,57 @@
 <template>
-    <v-card flat rounded="0" class="overflow-visible">
-        <v-toolbar
-            :density="density"
-            :color="color"
-            class="overflow-visible px-5"
-        >
-            <v-toolbar-title class="ma-0">{{ title }}</v-toolbar-title>
-            <slot name="toolbar-action"></slot>
-
-            <!-- extended button -->
-            <v-btn
-                v-if="showExpandButton"
-                variant="flat"
-                :rounded="0"
-                color="primary"
-                size="small"
-                style="
-                    position: absolute;
-                    right: 0;
-                    bottom: -18px;
-                    z-index: 999;
-                "
-                class="ma-0"
-                @click="expand = !expand"
+    <v-system-bar height="57" class="pa-0">
+        <v-card flat rounded="0" class="overflow-visible w100 text-left">
+            <v-toolbar
+                :density="density"
+                :color="color"
+                class="overflow-visible px-5 fill-height"
             >
-                <v-icon>mdi-plus</v-icon>
-            </v-btn>
-        </v-toolbar>
+                <v-toolbar-title class="ma-0">{{ title }}</v-toolbar-title>
+                <v-spacer />
+                <slot name="toolbar-action"></slot>
 
-        <v-expand-transition>
-            <div v-if="expand">
-                <common-divider />
-                <div class="pt-4 pb-6">
-                    <v-slider
-                        v-model="time"
-                        :max="6"
-                        :step="1"
-                        :ticks="labels"
-                        class="mx-4"
-                        color="primary"
-                        density="compact"
-                        hide-details
-                        show-ticks="always"
-                        thumb-size="10"
-                    ></v-slider>
+                <!-- extended button -->
+                <v-btn
+                    v-if="showExpandButton"
+                    variant="flat"
+                    :rounded="0"
+                    color="primary"
+                    size="small"
+                    style="
+                        position: absolute;
+                        right: 0;
+                        bottom: -18px;
+                        z-index: 999;
+                    "
+                    class="ma-0"
+                    @click="expand = !expand"
+                >
+                    <v-icon>mdi-plus</v-icon>
+                </v-btn>
+            </v-toolbar>
+
+            <v-expand-transition>
+                <div v-if="expand">
+                    <common-divider />
+                    <div class="pt-4 pb-6">
+                        <v-slider
+                            v-model="time"
+                            :max="6"
+                            :step="1"
+                            :ticks="labels"
+                            class="mx-4"
+                            color="primary"
+                            density="compact"
+                            hide-details
+                            show-ticks="always"
+                            thumb-size="10"
+                        ></v-slider>
+                    </div>
                 </div>
-            </div>
-        </v-expand-transition>
-        <common-divider />
-    </v-card>
+            </v-expand-transition>
+            <common-divider />
+        </v-card>
+    </v-system-bar>
 </template>
 
 <script>
@@ -67,6 +70,10 @@ export default {
             default: 'white',
         },
         showExpandButton: {
+            type: Boolean,
+            default: false,
+        },
+        app: {
             type: Boolean,
             default: false,
         },

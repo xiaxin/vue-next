@@ -1,4 +1,4 @@
-export const useAppStore = definePiniaStore('app', {
+export const useAppStore = defineStore('app', {
     // state
     state: () => ({}),
 
